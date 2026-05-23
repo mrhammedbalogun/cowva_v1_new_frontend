@@ -14,6 +14,7 @@ export function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -24,16 +25,29 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    // Simulate form submission - replace with actual API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "" })
-    
-    // Reset success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000)
+    setError(null)
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        setError(data.error ?? "Something went wrong. Please try again.")
+      } else {
+        setIsSubmitted(true)
+        setFormData({ name: "", email: "", phone: "", subject: "", message: "" })
+        setTimeout(() => setIsSubmitted(false), 6000)
+      }
+    } catch {
+      setError("Network error. Please check your connection and try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const contactInfo = [
@@ -262,6 +276,12 @@ export function Contact() {
                       placeholder="How can we help you?"
                     />
                   </div>
+
+                  {error && (
+                    <div className="px-4 py-3 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm">
+                      {error}
+                    </div>
+                  )}
 
                   <button
                     type="submit"
