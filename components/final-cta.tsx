@@ -1,13 +1,21 @@
 "use client"
 
 import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { Building2, UserCircle, ArrowRight } from "lucide-react"
 
 export function FinalCTA() {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const [hfCount, setHfCount] = useState<number | null>(null)
+
+  useEffect(() => {
+    fetch("https://app.cowva.com/api/v1/stats/")
+      .then((r) => r.ok ? r.json() : null)
+      .then((data) => { if (data?.hf_count) setHfCount(data.hf_count) })
+      .catch(() => {})
+  }, [])
 
   return (
     <section ref={ref} className="py-20 lg:py-28 bg-gradient-to-r from-[#00B5AD] via-[#00A39B] to-[#27AE60] relative overflow-hidden">
@@ -33,7 +41,7 @@ export function FinalCTA() {
             Ready to Get Started?
           </h2>
           <p className="text-white/80 text-lg">
-            Join 70+ health facilities already using Cowva
+            Join {hfCount !== null ? `${hfCount}+` : "70+"} health facilities already using Cowva
           </p>
         </motion.div>
 
