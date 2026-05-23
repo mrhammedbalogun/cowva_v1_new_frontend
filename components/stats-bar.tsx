@@ -40,7 +40,7 @@ export function StatsBar() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await fetch("https://app.cowva.com/api/stats/")
+        const response = await fetch("https://app.cowva.com/api/v1/stats/")
         if (response.ok) {
           const data = await response.json()
           setStats(data)
