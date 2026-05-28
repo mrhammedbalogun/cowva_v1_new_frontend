@@ -83,7 +83,7 @@ export function Footer() {
               © 2026 Cowva. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
-              <Link href="#" className="text-gray-500 hover:text-gray-400 text-sm">
+              <Link href="/privacy-policy" className="text-gray-500 hover:text-gray-400 text-sm">
                 Privacy Policy
               </Link>
               <Link href="#" className="text-gray-500 hover:text-gray-400 text-sm">
