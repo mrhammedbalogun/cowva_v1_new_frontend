@@ -48,8 +48,8 @@ export default function PrivacyPolicyPage() {
             1. Who We Are
           </h2>
           <p className="mb-3">
-            Cowva is a vaccination records management platform operated by <strong className="text-white">Billz Technologies</strong>,
-            a technology company registered in Nigeria. Our platform is available at{" "}
+            Cowva is a vaccination records management platform developed and operated by the <strong className="text-white">Cowva Tech Team</strong>,
+            based in Nigeria. Our platform is available at{" "}
             <a href="https://cowva.com" className="text-[#00B5AD] hover:underline">cowva.com</a> and{" "}
             <a href="https://app.cowva.com" className="text-[#00B5AD] hover:underline">app.cowva.com</a>.
           </p>
@@ -351,7 +351,7 @@ export default function PrivacyPolicyPage() {
             your personal data, please contact us:
           </p>
           <div className="bg-[#0D1B2A] border border-[#00B5AD]/20 rounded-xl p-6 space-y-2 text-sm">
-            <p><span className="text-white font-medium">Company:</span> Billz Technologies (Cowva)</p>
+            <p><span className="text-white font-medium">Company:</span> Cowva</p>
             <p>
               <span className="text-white font-medium">Email:</span>{" "}
               <a href="mailto:support@cowva.com" className="text-[#00B5AD] hover:underline">support@cowva.com</a>
@@ -369,7 +369,7 @@ export default function PrivacyPolicyPage() {
       {/* Footer */}
       <footer className="border-t border-[#00B5AD]/10 bg-[#0a1520] py-8 mt-8">
         <div className="max-w-4xl mx-auto px-4 text-center text-sm text-gray-500 space-y-2">
-          <p>© 2026 Cowva (Billz Technologies). All rights reserved.</p>
+          <p>© 2026 Cowva. All rights reserved.</p>
           <div className="flex justify-center gap-6">
             <Link href="/privacy-policy" className="text-[#00B5AD]">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-gray-400 transition-colors">Terms of Service</Link>
